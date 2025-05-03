@@ -64,6 +64,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.io.IOException;
+
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements GearInventoryProvider {
     public LivingEntityMixin(EntityType<?> type, Level world) {
@@ -128,7 +130,16 @@ public abstract class LivingEntityMixin extends Entity implements GearInventoryP
 
     @Inject(method = "decreaseAirSupply", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getAttribute(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeInstance;"), cancellable = true)
     private void galacticraft_modifyAirLevel(int air, CallbackInfoReturnable<Integer> cir) {
-        AttributeInstance attribute = ((LivingEntity) (Object) this).getAttribute(GcApiEntityAttributes.CAN_BREATHE_IN_SPACE);
+        LivingEntity entity = ((LivingEntity) (Object) this);
+        Level level = entity.level();
+        if (!level.isClientSide()
+                && (level.getDefaultBreathable()
+                || level.isBreathable(entity.blockPosition().above()))) {
+            this.lastHurtBySuffocationTimestamp = this.tickCount;
+            cir.setReturnValue(this.increaseAirSupply(air));
+            return;
+        }
+        AttributeInstance attribute = entity.getAttribute(GcApiEntityAttributes.CAN_BREATHE_IN_SPACE);
         if (attribute != null && attribute.getValue() >= 0.99D) {
             this.lastHurtBySuffocationTimestamp = this.tickCount;
             cir.setReturnValue(this.increaseAirSupply(air));

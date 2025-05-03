@@ -222,7 +222,7 @@ public class OxygenSealerBlockEntity extends MachineBlockEntity {
     }
 
     public boolean hasOxygen() {
-        return this.hasEnergy;
+        return this.hasOxygen;
     }
 
     public boolean isBlocked() {

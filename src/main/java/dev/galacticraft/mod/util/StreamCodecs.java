@@ -48,6 +48,16 @@ public interface StreamCodecs {
             ByteBuf::readLong
     );
 
+    StreamCodec<ByteBuf, Integer> INT = StreamCodec.of(
+            ByteBuf::writeInt,
+            ByteBuf::readInt
+    );
+
+    StreamCodec<ByteBuf, Boolean> BOOLEAN = StreamCodec.of(
+            ByteBuf::writeBoolean,
+            ByteBuf::readBoolean
+    );
+
     static <B extends RegistryFriendlyByteBuf, V> StreamCodec<B, V> ofRegistryEntry(ResourceKey<Registry<V>> registry) {
         return StreamCodec.of(
                 (b, v) -> b.writeResourceLocation(b.registryAccess().registryOrThrow(registry).getKey(v)),

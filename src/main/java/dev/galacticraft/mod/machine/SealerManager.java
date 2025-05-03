@@ -25,6 +25,7 @@ package dev.galacticraft.mod.machine;
 import dev.galacticraft.mod.Constant;
 import dev.galacticraft.mod.Galacticraft;
 import dev.galacticraft.mod.content.block.entity.machine.OxygenSealerBlockEntity;
+import dev.galacticraft.mod.network.s2c.SealUpdatePayload;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -123,6 +124,7 @@ public class SealerManager {
             calculateRoomSize(sealerPos.offset(0, 1, 0), level, maxPossibleRoomSize, sealedArea);
             dimensionSealedBlocks.removeAll(sealedArea);
         }
+        SealUpdatePayload.broadcast(level, sealedArea, isSealed);
     }
 
     private int calculateRoomSize(BlockPos startPos, ServerLevel level, int maxRoomSize, Set<BlockPos> sealedArea) {
