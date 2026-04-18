@@ -1040,6 +1040,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(Config.ACCESSIBILITY, "Accessibility");
         this.add(Config.REDUCED_MOTIONS, "Reduced Motions");
         this.add(Config.DISABLE_SPACE_RACE_SCREEN_ANIMATION, "Disable Space Race Screen Animation");
+        this.add(Config.DISABLE_ROCKET_SHAKE, "Disable Rocket Shake");
 
         this.add(Keybindings.ROCKET_INVENTORY, "Open Rocket Inventory");
         this.add(Keybindings.OPEN_CELESTIAL_SCREEN, "Open Celestial Map");

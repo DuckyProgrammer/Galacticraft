@@ -94,6 +94,7 @@ public class ConfigImpl implements Config {
     private boolean enableGcHouston = true;
     private boolean enableCreativeGearInv = true;
     private boolean disableSpaceRaceScreenAnimation = false;
+    private boolean disableRocketShake = false;
 
     public ConfigImpl(File file) {
         this.gson = new GsonBuilder()
@@ -442,6 +443,15 @@ public class ConfigImpl implements Config {
 
     public void setDisableSpaceRaceScreenAnimation(boolean disableSpaceRaceScreenAnimation) {
         this.disableSpaceRaceScreenAnimation = disableSpaceRaceScreenAnimation;
+    }
+
+    @Override
+    public boolean disableRocketShake() {
+        return this.disableRocketShake;
+    }
+
+    public void setDisableRocketShake(boolean disableRocketShake) {
+        this.disableRocketShake = disableRocketShake;
     }
 
     public void load() {
@@ -962,6 +972,16 @@ public class ConfigImpl implements Config {
                     config.disableSpaceRaceScreenAnimation())
                     .setTooltip(tooltipSingular.apply(Translations.Config.DISABLE_SPACE_RACE_SCREEN_ANIMATION))
                     .setSaveConsumer(config::setDisableSpaceRaceScreenAnimation)
+                    .setDefaultValue(false)
+                    .build()
+            );
+
+            reducedMotions.add(new BooleanToggleBuilder(
+                    Component.translatable(Translations.Config.RESET),
+                    label.apply(Translations.Config.DISABLE_ROCKET_SHAKE),
+                    config.disableRocketShake())
+                    .setTooltip(tooltipSingular.apply(Translations.Config.DISABLE_ROCKET_SHAKE))
+                    .setSaveConsumer(config::setDisableRocketShake)
                     .setDefaultValue(false)
                     .build()
             );

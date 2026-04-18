@@ -97,6 +97,8 @@ public interface Config {
 
     boolean disableSpaceRaceScreenAnimation();
 
+    boolean disableRocketShake();
+
     void load();
 
     void save();
