@@ -95,6 +95,7 @@ public class ConfigImpl implements Config {
     private boolean enableCreativeGearInv = true;
     private boolean disableSpaceRaceScreenAnimation = false;
     private boolean disableRocketShake = false;
+    private boolean disableInvalidOxygenFlashing = false;
 
     public ConfigImpl(File file) {
         this.gson = new GsonBuilder()
@@ -452,6 +453,15 @@ public class ConfigImpl implements Config {
 
     public void setDisableRocketShake(boolean disableRocketShake) {
         this.disableRocketShake = disableRocketShake;
+    }
+
+    @Override
+    public boolean disableInvalidOxygenFlashing() {
+        return this.disableInvalidOxygenFlashing;
+    }
+
+    public void setDisableInvalidOxygenFlashing(boolean disableInvalidOxygenFlashing) {
+        this.disableInvalidOxygenFlashing = disableInvalidOxygenFlashing;
     }
 
     public void load() {
@@ -982,6 +992,16 @@ public class ConfigImpl implements Config {
                     config.disableRocketShake())
                     .setTooltip(tooltipSingular.apply(Translations.Config.DISABLE_ROCKET_SHAKE))
                     .setSaveConsumer(config::setDisableRocketShake)
+                    .setDefaultValue(false)
+                    .build()
+            );
+
+            reducedMotions.add(new BooleanToggleBuilder(
+                    Component.translatable(Translations.Config.RESET),
+                    label.apply(Translations.Config.DISABLE_INVALID_OXYGEN_FLASHING),
+                    config.disableInvalidOxygenFlashing())
+                    .setTooltip(tooltipSingular.apply(Translations.Config.DISABLE_INVALID_OXYGEN_FLASHING))
+                    .setSaveConsumer(config::setDisableInvalidOxygenFlashing)
                     .setDefaultValue(false)
                     .build()
             );

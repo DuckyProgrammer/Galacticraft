@@ -99,6 +99,8 @@ public interface Config {
 
     boolean disableRocketShake();
 
+    boolean disableInvalidOxygenFlashing();
+
     void load();
 
     void save();

@@ -213,6 +213,7 @@ public interface Translations {
         String REDUCED_MOTIONS = "config.galacticraft.accessibility.reduced_motions";
         String DISABLE_SPACE_RACE_SCREEN_ANIMATION = "config.galacticraft.accessibility.reduced_motions.disable_space_race_screen_animation";
         String DISABLE_ROCKET_SHAKE = "config.galacticraft.accessibility.reduced_motions.disable_rocket_shake";
+        String DISABLE_INVALID_OXYGEN_FLASHING = "config.galacticraft.accessibility.reduced_motions.disable_invalid_oxygen_flashing";
 
     }
 
