@@ -434,6 +434,20 @@ public class ConfigImpl implements Config {
         this.enableCreativeGearInv = enableCreativeGearInv;
     }
 
+    @Override
+    public boolean reduceAllMotions() {
+        // Just the base, this will check the specific reduced motion options and if those are all true, this will return true.
+
+        //return this.reduceAllMotions;
+        return false;
+    }
+
+    public void setReduceAllMotions(boolean reduceAllMotions) {
+        // Similar to above, this will set all reduced motion options to either true or false.
+
+        //this.reduceAllMotions = reduceAllMotions;
+    }
+
     public void load() {
         if (!this.file.exists()) {
             this.file.getParentFile().mkdirs();
@@ -943,6 +957,20 @@ public class ConfigImpl implements Config {
                     .setDefaultValue(1)
                     .build()
             );
+
+            SubCategoryBuilder reducedMotions = ConfigEntryBuilder.create().startSubCategory(Component.translatable(Translations.Config.REDUCED_MOTIONS));
+
+            reducedMotions.add(new BooleanToggleBuilder(
+                    Component.translatable(Translations.Config.RESET),
+                    label.apply(Translations.Config.ENABLE_ALL_REDUCED_MOTIONS),
+                    config.reduceAllMotions())
+                    .setTooltip(tooltipSingular.apply(Translations.Config.ENABLE_ALL_REDUCED_MOTIONS))
+                    .setSaveConsumer(config::setReduceAllMotions)
+                    .setDefaultValue(false)
+                    .build()
+            );
+
+            b.getOrCreateCategory(Component.translatable(Translations.Config.ACCESSIBILITY)).addEntry(reducedMotions.build());
 
             return b.build();
         }

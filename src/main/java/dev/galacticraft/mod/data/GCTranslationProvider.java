@@ -1037,6 +1037,10 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(Config.BOSS_HEALTH_MODIFIER, "Boss Health Modifier");
         this.add(Config.BOSS_HEALTH_MODIFIER_DESC, "Multiplies All GC5 Bosses Health By This Value");
 
+        this.add(Config.ACCESSIBILITY, "Accessibility");
+        this.add(Config.REDUCED_MOTIONS, "Reduced Motions");
+        this.add(Config.ENABLE_ALL_REDUCED_MOTIONS, "Disable All Motions");
+
         this.add(Keybindings.ROCKET_INVENTORY, "Open Rocket Inventory");
         this.add(Keybindings.OPEN_CELESTIAL_SCREEN, "Open Celestial Map");
     }

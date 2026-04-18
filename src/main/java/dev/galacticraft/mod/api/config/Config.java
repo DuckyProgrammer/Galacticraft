@@ -95,6 +95,8 @@ public interface Config {
 
     boolean enableCreativeGearInv();
 
+    boolean reduceAllMotions();
+
     void load();
 
     void save();
