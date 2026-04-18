@@ -454,7 +454,7 @@
   "commands.galacticraft.oxygen.set.single": "Set oxygen at block",
   "config.galacticraft.accessibility": "Accessibility",
   "config.galacticraft.accessibility.reduced_motions": "Reduced Motions",
-  "config.galacticraft.accessibility.reduced_motions.enable_all": "Disable All Motions",
+  "config.galacticraft.accessibility.reduced_motions.disable_space_race_screen_animation": "Disable Space Race Screen Animation",
   "config.galacticraft.client": "Client",
   "config.galacticraft.client.skybox": "Skybox",
   "config.galacticraft.client.square_canned_food": "Square Canned Food",

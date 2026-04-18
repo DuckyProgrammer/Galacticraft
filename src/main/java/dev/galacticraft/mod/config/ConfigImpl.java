@@ -93,6 +93,7 @@ public class ConfigImpl implements Config {
     private boolean hideAlphaWarning = false;
     private boolean enableGcHouston = true;
     private boolean enableCreativeGearInv = true;
+    private boolean disableSpaceRaceScreenAnimation = false;
 
     public ConfigImpl(File file) {
         this.gson = new GsonBuilder()
@@ -435,17 +436,12 @@ public class ConfigImpl implements Config {
     }
 
     @Override
-    public boolean reduceAllMotions() {
-        // Just the base, this will check the specific reduced motion options and if those are all true, this will return true.
-
-        //return this.reduceAllMotions;
-        return false;
+    public boolean disableSpaceRaceScreenAnimation() {
+        return this.disableSpaceRaceScreenAnimation;
     }
 
-    public void setReduceAllMotions(boolean reduceAllMotions) {
-        // Similar to above, this will set all reduced motion options to either true or false.
-
-        //this.reduceAllMotions = reduceAllMotions;
+    public void setDisableSpaceRaceScreenAnimation(boolean disableSpaceRaceScreenAnimation) {
+        this.disableSpaceRaceScreenAnimation = disableSpaceRaceScreenAnimation;
     }
 
     public void load() {
@@ -962,10 +958,10 @@ public class ConfigImpl implements Config {
 
             reducedMotions.add(new BooleanToggleBuilder(
                     Component.translatable(Translations.Config.RESET),
-                    label.apply(Translations.Config.ENABLE_ALL_REDUCED_MOTIONS),
-                    config.reduceAllMotions())
-                    .setTooltip(tooltipSingular.apply(Translations.Config.ENABLE_ALL_REDUCED_MOTIONS))
-                    .setSaveConsumer(config::setReduceAllMotions)
+                    label.apply(Translations.Config.DISABLE_SPACE_RACE_SCREEN_ANIMATION),
+                    config.disableSpaceRaceScreenAnimation())
+                    .setTooltip(tooltipSingular.apply(Translations.Config.DISABLE_SPACE_RACE_SCREEN_ANIMATION))
+                    .setSaveConsumer(config::setDisableSpaceRaceScreenAnimation)
                     .setDefaultValue(false)
                     .build()
             );

@@ -95,7 +95,7 @@ public interface Config {
 
     boolean enableCreativeGearInv();
 
-    boolean reduceAllMotions();
+    boolean disableSpaceRaceScreenAnimation();
 
     void load();
 

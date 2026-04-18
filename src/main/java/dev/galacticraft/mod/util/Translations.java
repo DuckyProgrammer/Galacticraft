@@ -211,7 +211,7 @@ public interface Translations {
 
         String ACCESSIBILITY = "config.galacticraft.accessibility";
         String REDUCED_MOTIONS = "config.galacticraft.accessibility.reduced_motions";
-        String ENABLE_ALL_REDUCED_MOTIONS = "config.galacticraft.accessibility.reduced_motions.enable_all";
+        String DISABLE_SPACE_RACE_SCREEN_ANIMATION = "config.galacticraft.accessibility.reduced_motions.disable_space_race_screen_animation";
 
     }
 
